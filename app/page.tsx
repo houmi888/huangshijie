@@ -66,6 +66,7 @@ export default function HomePage() {
   const [scrolled, setScrolled] = useState(false)
   const [content, setContent] = useState<SiteContent | null>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [showQR, setShowQR] = useState(false)
 
   // 视差
   const { ref: parallaxRef, style: parallaxStyle } = useParallax(15)
@@ -131,9 +132,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-neon-green to-neon-cyan flex items-center justify-center shadow-lg shadow-neon-green/20">
-              <span className="text-base">🐔</span>
-            </div>
+            <img src="/images/logo.png" alt="小鸡AI" className="w-9 h-9 rounded-xl shadow-lg shadow-neon-green/20" />
             <span className="text-lg font-bold text-white">小鸡AI</span>
           </div>
 
@@ -152,7 +151,7 @@ export default function HomePage() {
 
           {/* PC CTA */}
           <button
-            onClick={() => trackAndNavigate('导航-免费体验', 'nav', hero.ctaUrl)}
+            onClick={() => { setShowQR(true); trackAndNavigate('导航-免费体验', 'nav', '') }}
             className="hidden md:flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-sm hover:shadow-lg hover:shadow-neon-green/20 transition-all active:scale-95"
           >
             免费体验 <ArrowRight className="w-3.5 h-3.5" />
@@ -180,7 +179,7 @@ export default function HomePage() {
               </button>
             ))}
             <button
-              onClick={() => { trackAndNavigate('移动导航-免费体验', 'nav', hero.ctaUrl); setMobileMenuOpen(false) }}
+              onClick={() => { setShowQR(true); trackAndNavigate('移动导航-免费体验', 'nav', ''); setMobileMenuOpen(false) }}
               className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-sm"
             >
               免费体验
@@ -213,7 +212,7 @@ export default function HomePage() {
               {/* CTA 按钮 - PC 横排 / 移动竖排 */}
               <div className={`flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-1000 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <button
-                  onClick={() => trackAndNavigate('Hero-主CTA', 'cta', hero.ctaUrl)}
+                  onClick={() => { setShowQR(true); trackAndNavigate('Hero-主CTA', 'cta', '') }}
                   className="btn-ripple px-8 py-4 rounded-2xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-base flex items-center justify-center gap-2 animate-pulse-glow transition-transform active:scale-95 hover:shadow-glow-green-lg"
                 >
                   {hero.ctaText} <ChevronRight className="w-4 h-4" />
@@ -229,37 +228,38 @@ export default function HomePage() {
               <p className="text-gray-600 text-xs">🔥 名额有限，先到先得，立即体验 AI 降维打击</p>
             </div>
 
-            {/* 右侧 3D 产品展示 - 鼠标视差 */}
+            {/* 右侧双图展示 - 鼠标视差 */}
             <div className={`flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
               <div className="relative" ref={parallaxRef}>
-                {/* 手机模型 */}
-                <div className="relative w-60 h-[480px] sm:w-72 sm:h-[540px] animate-float" style={parallaxStyle}>
-                  <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-dark-600 to-dark-800 border border-white/10 shadow-2xl shadow-neon-cyan/10 overflow-hidden">
-                    <div className="h-10 bg-dark-900/80 flex items-center justify-center">
-                      <div className="w-20 h-5 rounded-full bg-dark-900" />
+                {/* 双手机截图并列 */}
+                <div className="flex gap-4 sm:gap-6" style={parallaxStyle}>
+                  {/* 左图 - 创作中心 */}
+                  <div className={`relative transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <div className="w-[140px] sm:w-[180px] lg:w-[220px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-neon-green/10 animate-float">
+                      <img
+                        src="/images/hero-1.png"
+                        alt="小鸡AI创作中心"
+                        className="w-full h-auto"
+                      />
                     </div>
-                    <div className="p-4 space-y-3">
-                      <div className="h-3 w-3/4 rounded bg-neon-green/20 shimmer" />
-                      <div className="h-3 w-1/2 rounded bg-neon-cyan/20 shimmer" />
-                      <div className="mt-4 h-28 rounded-xl bg-gradient-to-br from-neon-green/10 to-neon-cyan/10 border border-neon-green/20 flex items-center justify-center">
-                        <Zap className="w-10 h-10 text-neon-green breathe" />
-                      </div>
-                      <div className="space-y-2 mt-3">
-                        <div className="h-3 w-full rounded bg-white/5" />
-                        <div className="h-3 w-2/3 rounded bg-white/5" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-2 mt-3">
-                        <div className="h-16 rounded-lg bg-neon-green/10 border border-neon-green/20" />
-                        <div className="h-16 rounded-lg bg-neon-cyan/10 border border-neon-cyan/20" />
-                      </div>
-                      <div className="h-10 rounded-xl bg-gradient-to-r from-neon-green/20 to-emerald-500/20 border border-neon-green/30 mt-2" />
-                    </div>
+                    <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-neon-green/5 to-transparent blur-xl -z-10" />
                   </div>
-                  <div className="absolute -inset-6 rounded-[3rem] bg-gradient-to-b from-neon-green/5 to-neon-cyan/5 blur-xl -z-10" />
+
+                  {/* 右图 - 多平台发布 */}
+                  <div className={`relative mt-12 transition-all duration-1000 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <div className="w-[140px] sm:w-[180px] lg:w-[220px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-neon-cyan/10 animate-float" style={{ animationDelay: '1.5s' }}>
+                      <img
+                        src="/images/hero-2.jpg"
+                        alt="小鸡AI多平台发布"
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-neon-cyan/5 to-transparent blur-xl -z-10" />
+                  </div>
                 </div>
 
                 {/* 浮动徽章 - 数字滚动 */}
-                <div className={`absolute -left-8 top-20 glass rounded-xl px-3 py-2 border border-neon-green/20 animate-float-slow hidden lg:flex items-center gap-2 transition-all duration-1000 delay-[800ms] ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ animationDelay: '1s' }}>
+                <div className={`absolute -left-8 top-16 glass rounded-xl px-3 py-2 border border-neon-green/20 animate-float-slow hidden lg:flex items-center gap-2 transition-all duration-1000 delay-[800ms] ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ animationDelay: '1s' }}>
                   <div className="w-8 h-8 rounded-lg bg-neon-green/20 flex items-center justify-center text-neon-green">
                     <Zap className="w-4 h-4" />
                   </div>
@@ -269,7 +269,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className={`absolute -right-6 bottom-32 glass rounded-xl px-3 py-2 border border-neon-cyan/20 animate-float-slow hidden lg:flex items-center gap-2 transition-all duration-1000 delay-[1200ms] ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ animationDelay: '2s' }}>
+                <div className={`absolute -right-6 bottom-16 glass rounded-xl px-3 py-2 border border-neon-cyan/20 animate-float-slow hidden lg:flex items-center gap-2 transition-all duration-1000 delay-[1200ms] ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ animationDelay: '2s' }}>
                   <div className="w-8 h-8 rounded-lg bg-neon-cyan/20 flex items-center justify-center text-neon-cyan">
                     <MessageCircle className="w-4 h-4" />
                   </div>
@@ -427,10 +427,18 @@ export default function HomePage() {
                   'outline-cyan': 'glass border border-neon-cyan/30 text-neon-cyan hover:border-neon-cyan/60 hover:shadow-glow-cyan',
                   'outline-green': 'glass border border-green-400/30 text-green-400 hover:border-green-400/60 hover:shadow-glow-green',
                 }
+                const isWechat = btn.icon === 'wechat'
                 return (
                   <button
                     key={btn.name}
-                    onClick={() => trackAndNavigate(btn.name, btn.type, btn.url)}
+                    onClick={() => {
+                      if (isWechat) {
+                        setShowQR(true)
+                        trackAndNavigate(btn.name, btn.type, '')
+                      } else {
+                        trackAndNavigate(btn.name, btn.type, btn.url)
+                      }
+                    }}
                     className={`btn-ripple flex-1 py-4 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all active:scale-95 ${styles[btn.style] || styles.primary}`}
                     style={{ animationDelay: `${i * 200}ms` }}
                   >
@@ -445,11 +453,41 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ====== 微信二维码弹窗 ====== */}
+      {showQR && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => setShowQR(false)}>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          <div
+            className="relative glass-strong rounded-3xl p-6 sm:p-8 max-w-sm w-full animate-scale-in border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowQR(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="text-center">
+              <h3 className="text-lg font-bold text-white mb-1">添加微信</h3>
+              <p className="text-gray-400 text-xs mb-4">扫描二维码，添加客服领取免费体验名额</p>
+              <div className="bg-white rounded-2xl p-3 inline-block mb-4">
+                <img
+                  src="/images/wechat-qr.png"
+                  alt="微信二维码"
+                  className="w-56 h-56 sm:w-64 sm:h-64"
+                />
+              </div>
+              <p className="text-gray-500 text-xs">长按或截图保存，打开微信扫一扫</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ====== Footer ====== */}
       <footer className="py-8 border-t border-white/5 animate-fade-in">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm">🐔</span>
+            <img src="/images/logo.png" alt="小鸡AI" className="w-5 h-5 rounded" />
             <p className="text-gray-600 text-xs">{footer.copyright}</p>
           </div>
           <div className="flex items-center gap-4">
