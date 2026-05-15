@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2.5">
-            <img src="/images/logo.png" alt="小鸡AI" className="w-9 h-9 rounded-xl shadow-lg shadow-neon-green/20" />
+            <img src="/huangshijie/images/logo.png" alt="小鸡AI" className="w-9 h-9 rounded-xl shadow-lg shadow-neon-green/20" />
             <span className="text-lg font-bold text-white">小鸡AI</span>
           </div>
 
@@ -237,7 +237,7 @@ export default function HomePage() {
                   <div className={`relative transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="w-[140px] sm:w-[180px] lg:w-[220px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-neon-green/10 animate-float">
                       <img
-                        src="/images/hero-1.png"
+                        src="/huangshijie/images/hero-1.png"
                         alt="小鸡AI创作中心"
                         className="w-full h-auto"
                       />
@@ -249,7 +249,7 @@ export default function HomePage() {
                   <div className={`relative mt-12 transition-all duration-1000 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="w-[140px] sm:w-[180px] lg:w-[220px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-neon-cyan/10 animate-float" style={{ animationDelay: '1.5s' }}>
                       <img
-                        src="/images/hero-2.jpg"
+                        src="/huangshijie/images/hero-2.jpg"
                         alt="小鸡AI多平台发布"
                         className="w-full h-auto"
                       />
@@ -472,7 +472,7 @@ export default function HomePage() {
               <p className="text-gray-400 text-xs mb-4">扫描二维码，添加客服领取免费体验名额</p>
               <div className="bg-white rounded-2xl p-3 inline-block mb-4">
                 <img
-                  src="/images/wechat-qr.png"
+                  src="/huangshijie/images/wechat-qr.png"
                   alt="微信二维码"
                   className="w-56 h-56 sm:w-64 sm:h-64"
                 />
@@ -487,7 +487,7 @@ export default function HomePage() {
       <footer className="py-8 border-t border-white/5 animate-fade-in">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="小鸡AI" className="w-5 h-5 rounded" />
+            <img src="/huangshijie/images/logo.png" alt="小鸡AI" className="w-5 h-5 rounded" />
             <p className="text-gray-600 text-xs">{footer.copyright}</p>
           </div>
           <div className="flex items-center gap-4">
