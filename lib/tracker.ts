@@ -326,8 +326,10 @@ export function trackClick(buttonName: string, buttonType: string, targetUrl?: s
  */
 export function trackAndNavigate(buttonName: string, buttonType: string, targetUrl: string) {
   trackClick(buttonName, buttonType, targetUrl)
-  // 异步跳转，给追踪数据入队留时间
-  setTimeout(() => {
-    window.open(targetUrl, '_blank')
-  }, 50)
+  if (targetUrl) {
+    // 异步跳转，给追踪数据入队留时间
+    setTimeout(() => {
+      window.open(targetUrl, '_blank')
+    }, 50)
+  }
 }
