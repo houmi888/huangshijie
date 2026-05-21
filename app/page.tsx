@@ -151,7 +151,7 @@ export default function HomePage() {
 
           {/* PC CTA */}
           <button
-            onClick={() => { setShowQR(true); trackAndNavigate('导航-免费体验', 'nav', '') }}
+            onClick={() => { scrollTo('#contact'); trackAndNavigate('导航-免费体验', 'nav', '') }}
             className="hidden md:flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-sm hover:shadow-lg hover:shadow-neon-green/20 transition-all active:scale-95"
           >
             免费体验 <ArrowRight className="w-3.5 h-3.5" />
@@ -179,7 +179,7 @@ export default function HomePage() {
               </button>
             ))}
             <button
-              onClick={() => { setShowQR(true); trackAndNavigate('移动导航-免费体验', 'nav', ''); setMobileMenuOpen(false) }}
+              onClick={() => { scrollTo('#contact'); trackAndNavigate('移动导航-免费体验', 'nav', ''); setMobileMenuOpen(false) }}
               className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-sm"
             >
               免费体验
@@ -212,7 +212,7 @@ export default function HomePage() {
               {/* CTA 按钮 - PC 横排 / 移动竖排 */}
               <div className={`flex flex-col sm:flex-row gap-3 mb-6 transition-all duration-1000 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <button
-                  onClick={() => { setShowQR(true); trackAndNavigate('Hero-主CTA', 'cta', '') }}
+                  onClick={() => { scrollTo('#contact'); trackAndNavigate('Hero-主CTA', 'cta', '') }}
                   className="btn-ripple px-8 py-4 rounded-2xl bg-gradient-to-r from-neon-green to-emerald-500 text-dark-900 font-bold text-base flex items-center justify-center gap-2 animate-pulse-glow transition-transform active:scale-95 hover:shadow-glow-green-lg"
                 >
                   {hero.ctaText} <ChevronRight className="w-4 h-4" />
