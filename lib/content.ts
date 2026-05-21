@@ -117,8 +117,8 @@ const defaultContent: SiteContent = {
 
   contactButtons: [
     { name: '添加微信', type: 'cta', url: 'https://work.weixin.qq.com/ca/cawcdeb10577209036', icon: 'wechat', style: 'primary' },
-    { name: '添加 WhatsApp', type: 'cta', url: 'https://wa.me/8617575011483', icon: 'whatsapp', style: 'outline-cyan' },
-    { name: '添加 LINE', type: 'cta', url: 'https://line.me/ti/p/H6tCtVGGSA', icon: 'line', style: 'outline-green' },
+    { name: '添加 WhatsApp', type: 'cta', url: 'https://wa.me/8613025332184', icon: 'whatsapp', style: 'outline-cyan' },
+    { name: '添加 LINE', type: 'cta', url: 'https://line.me/ti/p/fenKsF3qS8', icon: 'line', style: 'outline-green' },
   ],
 
   footer: {
